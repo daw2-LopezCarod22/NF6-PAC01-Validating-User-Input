@@ -91,8 +91,8 @@ switch ($_GET['action']) {
                 }   
                 $email = isset($_POST['email']) ?
                     trim($_POST['email']) : '';
-                if (empty($email)) {
-                    $error[] = urlencode('Please select a email.');
+                if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $error[] = urlencode('Please write a valid email.');
                 }
                 if (empty($error)) {
                     $query = 'INSERT INTO
@@ -198,9 +198,9 @@ switch ($_GET['action']) {
                 }
                 $email = isset($_POST['email']) ?
                     trim($_POST['email']) : '';
-                if (empty($email)) {
-                    $error[] = urlencode('Please select a email.');
-                } 
+                if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $error[] = urlencode('Please write a valid email.');
+                }
                 if (empty($error)) {
                      $query = 'UPDATE 
                             people 
